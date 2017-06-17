@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Geocoder API
-const geocodeAPI = "35e5548c618555b1a43eb4759d26b260";
+const nytSearchAPI = "3d6446c5bbce42a68429fb02c8ad0975";
 
 // Helper Functions (in this case the only one is runQuery)
 const helpers = {

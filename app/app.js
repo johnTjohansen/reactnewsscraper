@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-
 // Include the Main Component
 import Main from "./components/Main";
 

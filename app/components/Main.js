@@ -1,8 +1,9 @@
 import React from "react";
 
 // Import sub-components
-import Form from "./children/Form";
-import Results from "./children/Results";
+import Search from "./children/Search.js";
+import Results from "./children/Results.js";
+import Saved from "./children/Saved.js";
 
 // Helper Function
 import helpers from "./utils/helpers";
