@@ -2,7 +2,7 @@
 // ==============
 
 // Require mongoose
-import mongoose from "mongoose";
+var mongoose = require("mongoose");
 
 // Create a schema class using mongoose's schema method
 var Schema = mongoose.Schema;
@@ -32,4 +32,4 @@ var headlineSchema = new Schema({
 var Headline = mongoose.model("Headline", headlineSchema);
 
 // Export the Headline model
-export default Headline;
+module.exports = Headline;

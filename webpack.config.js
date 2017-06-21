@@ -19,6 +19,7 @@ module.exports = {
         // node modules and server files unnecessarily
         include: /app/,
         loader: "babel",
+        exclude: /node_modules/,
         query: {
           // These are the specific transformations we'll be using.
           presets: ["react", "es2015"]

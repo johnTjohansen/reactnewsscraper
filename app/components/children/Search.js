@@ -4,29 +4,33 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      
+    }
   }
 
   render() {
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h2 className="panel-title text-center">Saved Articles</h2>
+          <h2 className="panel-title text-center">Search Articles</h2>
         </div>
         <div className="panel-body text-center">
-          <form id="search-articles" onSubmit={this.doSearch}>
+          <form id="search-arts">
             <h3>Topic</h3>
             <input type="text" required ref="topic" />
             <h3>Start Year</h3>
             <input type="number" ref="startYr" />
             <h3>End Year</h3>
             <input type="number" ref="endYr" />
-            <input type="submit" value="Search" />
+            <Button bsStyle="success" bsSize="large" onClick={doSearch}>Submit</Button>
           </form>  
         </div>
       </div>
     );
   },
   doSearch: function() {
+
     this.refs.topic
     this.refs.startYr
     this.refs.endYr

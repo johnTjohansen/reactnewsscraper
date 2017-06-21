@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 // Import sub-components
 import Search from "./children/Search.js";
@@ -40,28 +41,34 @@ class Main extends React.Component {
     });
   }
 
-  render() {
+  render: function() {
 
     return (
 
       <div className="container">
         <div className="row">
           <div className="jumbotron">
-            <h2 className="text-center">Address Finder!</h2>
+            <h2 className="text-center">New York Times Article Scrubber</h2>
             <p className="text-center">
-              <em>Enter a landmark to search for its exact address (ex: "Eiffel Tower").</em>
+              <em>Search for and annotate articles of interest</em>
             </p>
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
 
-            <Form setTerm={this.setTerm} />
+            {this.props.search}
 
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
 
-            <Results address={this.state.results} />
+            {this.props.results}
+
+          </div>
+
+          <div className="col-md-12">
+
+            {this.props.saved}
 
           </div>
 

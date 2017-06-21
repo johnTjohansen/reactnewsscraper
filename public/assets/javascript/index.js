@@ -1,3 +1,8 @@
+var React = require("react");
+var ReactDOM = require("react-dom");
+
+var 
+
 /* gloabl bootbox */
 $(document).ready(function() {
   // Setting a reference to the article-container div where all the dynamic content will go

@@ -22,7 +22,8 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static("./public"));
 
 // -------------------------------------------------
-
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+var db = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 // MongoDB Configuration configuration (Change this URL to your own DB)
 mongoose.connect("mongodb://127.0.0.1/locations");
 var db = mongoose.connection;

@@ -7,12 +7,12 @@ const nytSearchAPI = "3d6446c5bbce42a68429fb02c8ad0975";
 // Helper Functions (in this case the only one is runQuery)
 const helpers = {
 
-  runQuery: (location) => {
+  runQuery: (topic, startYr, endYr) => {
 
     console.log(location);
 
-    // Figure out the geolocation
-    const queryURL = "http://api.opencagedata.com/geocode/v1/json?query=" + location + "&pretty=1&key=" + geocodeAPI;
+    // Query NYT by topic and start/end year and collect 5 results
+    const queryURL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + topic + "&begin_date=" + startYr + "&end_date=" + endYr + "&api-key=" + nytSearchAPI;
 
     return axios.get(queryURL).then((response) => {
 
