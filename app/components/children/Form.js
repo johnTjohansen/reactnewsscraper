@@ -1,4 +1,5 @@
 import React from "react";
+import { ButtonToolbar, Button } from 'react-bootstrap';
 
 class Form extends React.Component {
   constructor(props) {
@@ -35,7 +36,10 @@ class Form extends React.Component {
           <h3 className="panel-title text-center">Query</h3>
         </div>
         <div className="panel-body text-center">
-
+         <ButtonToolbar>
+            <Button bsStyle="primary" bsSize="large" active>Primary button</Button>
+            <Button bsSize="large" active>Button</Button>
+          </ButtonToolbar>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">

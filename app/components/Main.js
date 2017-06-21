@@ -56,19 +56,19 @@ class Main extends React.Component {
 
           <div className="col-md-12">
 
-            {this.props.search}
+          <Search propName = {propValue} />
 
           </div>
 
           <div className="col-md-12">
 
-            {this.props.results}
+          <Results />
 
           </div>
 
           <div className="col-md-12">
 
-            {this.props.saved}
+          <Saved />
 
           </div>
 

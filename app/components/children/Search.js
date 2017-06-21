@@ -1,36 +1,63 @@
 import React from "react";
+import { Button Panel Form FieldGroup } from "react-bootstrap";
 
 class Search extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      
+      topic: '',
+      startYr: '',
+      endYr: ''
     }
+  }
+
+  callNYTIMES() {
+    helpers.runQuery().then(data)
+  }
+
+  setParms() {
+    this.setState(topic: this.value())
+    this.setState(startYr: this.value())
+    this.setState(endYr: this.value())
   }
 
   render() {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h2 className="panel-title text-center">Search Articles</h2>
-        </div>
-        <div className="panel-body text-center">
-          <form id="search-arts">
-            <h3>Topic</h3>
-            <input type="text" required ref="topic" />
-            <h3>Start Year</h3>
-            <input type="number" ref="startYr" />
-            <h3>End Year</h3>
-            <input type="number" ref="endYr" />
-            <Button bsStyle="success" bsSize="large" onClick={doSearch}>Submit</Button>
-          </form>  
-        </div>
-      </div>
+        <div>
+          <Panel header="Search Articles">
+            <Form onChange={setParms()}>
+              <FieldGroup
+                id="topic"
+                type="text"
+                label="Text"
+                placeholder="Enter search keywords"
+              />
+              <FieldGroup
+                id="startYr"
+                type="number"
+                label="Start Year"
+                placeholder="Enter year to begin search"
+              />
+              <FieldGroup
+                id="endYr"
+                type="number"
+                label="End Year"
+                placeholder="Enter year to end search"
+              />
+              <Button type="submit" className="btn btn-primary" onClick={doSearch()}>
+                Submit
+              </Button>
+            </Form>
+          </Panel>
+        </div>  
     );
   },
   doSearch: function() {
-
+    event.preventDefault();
+    helpers.runQuery().then((data) => {
+      
+    }
     this.refs.topic
     this.refs.startYr
     this.refs.endYr
