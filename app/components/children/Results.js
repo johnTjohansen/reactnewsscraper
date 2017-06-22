@@ -1,4 +1,5 @@
 import React from "react";
+import { Panel ListGroup } from "react-bootstrap";
 
 class Results extends React.Component {
 
@@ -6,34 +7,43 @@ class Results extends React.Component {
     super(props);
     this.state = {
       headlines: []
-    }
-
+    };
+    this.getArticles = this.getArticles.bind(this);
+    
   }
-  getArticles: function() {
+  getArticles: function(articles) {
 
   };
   render() {
     var articles = this.state.articles;
-    articles = articles.map(function(item, index) {
+    listItems = articles.map(function(item, index) {
       return(
-        <ShowArticle item={item} key={index}/>
+        <ListGroupItem item={item} key={index}>/>
         );
     });
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h2 className="panel-title text-center">Results</h2>
-        </div>
-        <div className="panel-body text-left">
-          <ul>{articles}</ul>
-        </div>
-      </div>
+        <div>
+          <Panel header="Results">
+              <ListGroup>
+                <ShowArticle />
+              </ListGroup>
+          </Panel>
+        </div>      
     );
+  }
+  ShowArticle: function() {
+    return(
+      <li>
+        <div className="art-list">
+          <span className="head-line">{this.props.item}</span>
+          <Button bsStyle="success" bsSize="small" onClick={SaveIt}>Save</Button>
+        </div>
+      </li>  
+      );
   }
 }
 
-var ShowArticle = React.createClass({
-  render: function(){
+
     return(
       <li>
         <div className="art-list">

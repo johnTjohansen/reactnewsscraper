@@ -11,39 +11,49 @@ class Search extends React.Component {
       endYr: ''
     }
   }
-
-  callNYTIMES() {
-    helpers.runQuery().then(data)
+  doSearch: function() {
+    event.preventDefault();
+    helpers.runQuery().then((data) => {
+      console.log(data)
+    }
+    //populate search results
   }
 
-  setParms() {
-    this.setState(topic: this.value())
-    this.setState(startYr: this.value())
-    this.setState(endYr: this.value())
+  handleChange: function(event) {
+    //update state of a form value when it is changed
+    var newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
   }
 
   render() {
     return (
         <div>
           <Panel header="Search Articles">
-            <Form onChange={setParms()}>
+            <Form>
               <FieldGroup
                 id="topic"
+                value={this.state.topic}
                 type="text"
                 label="Text"
                 placeholder="Enter search keywords"
+                onChange={this.handleChange}
               />
               <FieldGroup
                 id="startYr"
+                value={this.state.startYr}
                 type="number"
                 label="Start Year"
                 placeholder="Enter year to begin search"
+                onChange={this.handleChange}
               />
               <FieldGroup
                 id="endYr"
+                value={this.state.endYr}
                 type="number"
                 label="End Year"
                 placeholder="Enter year to end search"
+                onChange={this.handleChange}
               />
               <Button type="submit" className="btn btn-primary" onClick={doSearch()}>
                 Submit
@@ -53,15 +63,6 @@ class Search extends React.Component {
         </div>  
     );
   },
-  doSearch: function() {
-    event.preventDefault();
-    helpers.runQuery().then((data) => {
-      
-    }
-    this.refs.topic
-    this.refs.startYr
-    this.refs.endYr
-  }
 }
 
 // Export the component back for use in other files

@@ -4,8 +4,12 @@ import bodyParser from "body-parser";
 import logger from "morgan";
 import mongoose from "mongoose";
 
-// Require History Schema
-var History = require("./models/History");
+var React = require("react");
+var router = require("react-router");
+var Route = router.Route;
+var Router = router.Router;
+// Require Saved Articles Schema
+var Articles = require("./models/Articles");
 
 // Create Instance of Express
 var app = express();
@@ -45,12 +49,10 @@ app.get("/", function(req, res) {
 
 // This is the route we will send GET requests to retrieve our most recent search data.
 // We will call this route the moment our page gets rendered
-app.get("/api", function(req, res) {
+app.get("/api/saved", function(req, res) {
 
   // We will find all the records, sort it in descending order, then limit the records to 5
-  History.find({}).sort([
-    ["date", "descending"]
-  ]).limit(5).exec(function(err, doc) {
+  Articles.find({}).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }
@@ -61,20 +63,20 @@ app.get("/api", function(req, res) {
 });
 
 // This is the route we will send POST requests to save each search.
-app.post("/api", function(req, res) {
-  console.log("BODY: " + req.body.location);
+app.post("/api/saved", function(req, res) {
+  console.log("BODY: " + req.body.title);
 
-  // Here we'll save the location based on the JSON input.
-  // We'll use Date.now() to always get the current date time
-  History.create({
-    location: req.body.location,
-    date: Date.now()
+  // Here we'll save the article based on the JSON input.
+  Articles.create({
+    title: req.body.title,
+    date: req.body.date,
+    url: req.body.url
   }, function(err) {
     if (err) {
       console.log(err);
     }
     else {
-      res.send("Saved Search");
+      res.send("Saved Article");
     }
   });
 });
